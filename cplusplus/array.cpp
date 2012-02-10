@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include <math.h>
+#include <time.h>
 using namespace std;
 
 class Array
@@ -31,7 +32,7 @@ private:
  };
 
  Array::~Array(){
- cout<<"Array releasing Memory.";
+ cout<<"Array releasing Memory."<<endl;
 };
  
  void Array::print_me_raw(){
@@ -53,20 +54,19 @@ private:
   }
  };
  //returns the index of the largest of the three nodes rooted at index.
- int Array::largest_of_the_three(int index, int end){
+ int Array::largest_of_the_three(int top, int end){
   int l, r, largest;
-  l = heap_left(index);
-  r = heap_right(index);
+  l = heap_left(top);
+  r = heap_right(top);
 
-  if(l < i_length && (i_array[l] > i_array[index])){
+  if((l <= end) && (i_array[l] > i_array[top])){
    largest = l;
   }else{
-   largest = index;
+   largest = top;
   }  
-  if((r < i_length) && (i_array[r] > i_array[largest])){
+  if((r <= end) && (i_array[r] > i_array[largest])){
    largest = r;
   }
- cout<<"Largest of the three at " << index <<" is "<< largest <<endl;
  return largest;
  };
  //swap values at first and second index.
@@ -76,10 +76,9 @@ private:
   i_array[first] = i_array[second];
   i_array[second] = h;
  };
-
+ //Index is the top, end is  the last element's index.
  void Array::max_heapify(int index, int end){
   int l, r, largest;
-  cout<<"Heapifying "<<index<<" "<<endl;
   l = heap_left(index);
   r = heap_right(index);
   largest = largest_of_the_three(index, end);
@@ -93,9 +92,12 @@ private:
   for(int top=floor(i_length/2)-1;top >= 0; top--){
   max_heapify(top, i_length-1);
   }
+  cout<<"After buildheap ";
+  print_me_raw();
  }
  //
  void Array::heap_sort(){
+  build_heap();
   for(int end=i_length-1;end >= 1; end--){
   exchange(0, end);
   max_heapify(0, end-1);
@@ -104,23 +106,22 @@ private:
 
 
 int main(int argc, char* argv[]){
- int foo_array[] = {2,4,3,6,3};
- int root;
-
- root = atoi(argv[1]);
-
- cout<<"Input array length:"<<(sizeof(foo_array)/sizeof(foo_array[0]))<<endl;
- Array a(foo_array, (sizeof(foo_array)/sizeof(int)));
- cout<<"Before heapify "<< endl;
- a.print_me_raw();
+ int foo_array[9];
  
- a.print_me_raw();
- a.build_heap();
- cout<<"After heap building"<< endl;
+ srand (time(NULL) ); 
+ do{
+ for(int i = 0; i< 9;i++){ 
+  foo_array[i] = rand()%10;
+ }
+ Array a(foo_array, sizeof(foo_array)/sizeof(int));
+ cout<<"Before sorting: ";
  a.print_me_raw();
  a.heap_sort();
- cout<<"After sorting"<< endl;
+ cout<<" After sorting: ";
  a.print_me_raw();
+ cout<<endl;
+ }while(foo_array[3] != 3);
+ return 0;
 }
 
 
