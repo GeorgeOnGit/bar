@@ -35,7 +35,7 @@ private:
 
  template <class T>
  Array<T>::~Array(){
- cout<<"Array releasing Memory."<<endl;
+ cout<<"Array releasing Memory."<<endl<<endl;
 };
  
  template <class T>
@@ -119,8 +119,10 @@ private:
 int main(int argc, char* argv[]){
  int foo_array[9];
  float float_array[9];
+ double double_array[9];
  
  srand (time(NULL) ); 
+ cout<<"Integer"<<endl;
  do{
  for(int i = 0; i< 9;i++){ 
   foo_array[i] = rand()%10;
@@ -134,6 +136,7 @@ int main(int argc, char* argv[]){
  cout<<endl;
  }while(foo_array[3] != 3);
  //float
+ cout<<"Float"<<endl;
  do{
  for(int i = 0; i< 9;i++){ 
   float_array[i] = rand()%100/10.0;
@@ -146,6 +149,21 @@ int main(int argc, char* argv[]){
  a.print_me_raw();
  cout<<endl;
  }while(foo_array[3] >  3.0);
+ //double
+ cout<<"Double"<<endl;
+ do{
+ for(int i = 0; i< 9;i++){ 
+  double_array[i] = rand()%100/10.0;
+ }
+ Array <double> a(double_array, sizeof(double_array)/sizeof(double));
+ cout<<"Before sorting: ";
+ a.print_me_raw();
+ a.heap_sort();
+ cout<<" After sorting: ";
+ a.print_me_raw();
+ cout<<endl;
+ }while(foo_array[3] >  3.0);
+
  return 0;
 }
 
