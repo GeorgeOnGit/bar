@@ -25,6 +25,9 @@ class Node{
   right_tree_size = right == NULL ? 0 : right->size_of_tree();
   return 1 + left_tree_size + right_tree_size;
  };
+ Node::~Node(){
+ cout<<"releasing memory."<<endl;
+ };
 
  Node::Node(int param){
  data = param;
@@ -45,7 +48,7 @@ bool Node::compare_binary_tree(Node* first, Node* second){
  }; 
 //
 bool Node::operator== (Node second){
- return (data == second.data) && (left == second.left) && (right == second.right)
+ return (data == second.data) && (left == second.left) && (right == second.right);
 }
 //
 //create a heap tree.
@@ -66,12 +69,18 @@ void Node::make_children(int current_index, int* array, int length){
 
 int main(){
  int array[]={1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0};
- int array2[]={1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,1};
+ int array2[]={1,2,3,4,5,6,7,8,9,0,1,2,3,4,5,6,7,8,9,0};
+ Node node1(1), node2(2);
  Node* root1 = new Node(array[0]), *root2 = new Node(array2[0]);
  root1->make_children(0, array, sizeof(array)/sizeof(int));
  root2->make_children(0, array2, sizeof(array)/sizeof(int));
- cout << "size of root1 tree "<< root1->size_of_tree()<<endl;
- cout << " root1 == root 2? " << root1->compare_binary_tree(root1, root2);
+ cout << "size of first ttree "<< root1->size_of_tree()<<endl;
+ cout << " tree1 == tree2? " << (root1->compare_binary_tree(root1, root2) ? "true" : "flase") <<endl;
+ if(node1==node2){
+  cout<< "node1 equals to node2"<<endl;
+ }else{
+  cout<< "node1 NOT equals to node2"<<endl;
+ }
 }
 
 
