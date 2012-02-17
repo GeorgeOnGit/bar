@@ -5,7 +5,7 @@ require 'yaml'
 #i.e. X is a letter, x belongs to input string and x belongs to B, where B is the resulting set of dictionary words. 
 
 #1. read in dictory a txt file.
- dictionary = File.open("philosophy.txt")
+ dictionary = File.open("dictionary.txt")
 
 #2. build dick_hash[:word]=> word.alphabetize
  dic_hash = Hash.new
