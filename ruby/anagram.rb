@@ -12,7 +12,7 @@ require 'yaml'
  dictionary.each do | line |
   line.scan(/\w+/).each do | word |
    word = word.downcase
-   dic_hash[word] = word.split(/\s*/).sort.join.squeeze
+   dic_hash[word] ||= word.split(/\s*/).sort.join.squeeze
   end
  end 
 #3. reverse dick_hash build anagram[:ordered_string] = {words made of this charactors} 
