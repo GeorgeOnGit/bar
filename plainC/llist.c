@@ -14,7 +14,7 @@ void display_list(struct NODE *llist);
 
 
 int main(void) {
- struct NODE *llist = malloc(sizeof(struct NODE)), *sentinal = malloc(sizeof(struct NODE));
+ struct NODE *llist = (struct NODE*)malloc(sizeof(struct NODE)), *sentinal = (struct NODE*)malloc(sizeof(struct NODE));
  int number;
  
  for(number = 1; number < 150; number++){
