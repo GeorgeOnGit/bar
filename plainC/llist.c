@@ -48,6 +48,7 @@ void delete_node(struct NODE *root, int num) {
   root = root->next;
  }
   delete_node(root, num);
+ return;
 }
 
 void display_list(struct NODE *llist){
@@ -56,4 +57,5 @@ void display_list(struct NODE *llist){
   printf("[node%d]", llist->number);  
   llist = llist->next;
  }
+ return;
 }
