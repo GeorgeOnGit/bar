@@ -4,3 +4,5 @@ add.exe: add.c
 	g++ -o  add.exe -g add.c
 llist.exe: llist.c
 	g++ -o  llist.exe -g llist.c
+reverse.exe: reverse.c
+	g++ -o reverse.exe -g reverse.c
