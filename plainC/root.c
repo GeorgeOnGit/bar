@@ -1,5 +1,7 @@
 #include <stdio.h>
-
+/*
+ Calculate the square root of a number.
+ * */
 int main(void){
  float x,precision, root, beginning=0, end;
  double error;
