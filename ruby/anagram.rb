@@ -12,7 +12,7 @@ require 'yaml'
  dictionary.each do | line |
   line.scan(/\w+/).each do | word |
    word = word.downcase
-   dic_hash[word] ||= word.split(/\s*/).sort.join.squeeze
+   dic_hash[word] ||= word.each_char.sort.join.squeeze
   end
  end 
 #3. reverse dick_hash build anagram[:ordered_string] = {words made of this charactors} 
@@ -23,7 +23,7 @@ require 'yaml'
 #4. sort input, print out anagrams
  while true do
  puts "type in some letters:"
- letters = gets.chomp.downcase.split(/\s*/).sort.join.squeeze
+ letters = gets.chomp.downcase.each_char.sort.join.squeeze
  puts "Here are words made of #{letters}:"
  puts anagram[letters] ? anagram[letters].join("++") : "_____No Results_______"
  end
